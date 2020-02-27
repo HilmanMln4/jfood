@@ -5,44 +5,68 @@ public class Food
     private String name;
     private int price;
     private String category;
+    private Seller seller;
 
-    public Food()
+    public Food(int id, String name, int price, String category, Seller seller)
     {
+        this.id = id;
+        this.name = name;
+        this.seller = seller;
+        this.price = price;
+        this.category = category;
     }
 
     public int getId()
     {
-        return 0;
+        return id;
     }
     
     public String getName()
     {
-        return "oke";
+        return name;
+    }
+    
+    public Seller getSeller()
+    {
+        return seller;
     }
     
     public int getPrice()
     {
-        return 0;
+        return price;
     }
     
     public String getCategory()
     {
-        return "oke";
+        return category;
     }
     
-    public static void setId(int id)
+    public void setId(int id)
     {
+        this.id=id;
     }
     
-    public static void setName(String name)
+    public void setName(String name)
     {
+        this.name=name;
     }
     
-    public static void setPrice(int price)
+    public void setSeller(Seller seller)
     {
+        this.seller=seller;
     }
     
-    public static void setCategory(String category)
+    public void setPrice(int price)
+    {
+        this.price=price;
+    }
+    
+    public void setCategory(String category)
+    {
+        this.category=category;
+    }
+    
+    public void printData()
     {
     }
 }

@@ -9,7 +9,6 @@
 public class Customer
 {
     // instance variables - replace the example below with your own
-    private int x;
     private int id;
     private String name;
     private String email;
@@ -19,52 +18,67 @@ public class Customer
     /**
      * Constructor for objects of class Customer
      */
-    public void Customer()
+    public Customer(int id, String name, String email, String password, String joinDate)
     {
+        this.id=id;
+        this.name=name;
+        this.email=email;
+        this.password=password;
+        this.joinDate=joinDate;
     }
 
     public int getID()
     {
-        return 0;
+        return id;
     }
     
     public String getName()
     {
-        return "oke";
+        return name;
     }
     
     public String getEmail()
     {
-        return "oke";
+        return email;
     }
     
     public String getPassword()
     {
-        return "oke";
+        return password;
     }
     
     public String getJoinDate()
     {
-        return "oke";
+        return joinDate;
     }
     
-    public static void setId(int id)
+    public void setId(int id)
     {
+        this.id=id;
     }
     
-    public static void setName(String name)
+    public void setName(String name)
     {
+        this.name=name;
     }
     
-    public static void setEmail(String email)
+    public void setEmail(String email)
     {
+        this.email=email;
     }
     
-    public static void setPassword(String password)
+    public void setPassword(String password)
     {
+        this.password=password;
     }
     
-    public static void setJoinDate(String joinDate)
+    public void setJoinDate(String joinDate)
     {
-    }   
+        this.joinDate=joinDate;
+    }  
+    
+    public void printData()
+    {
+        System.out.println(getName());
+    }
 }

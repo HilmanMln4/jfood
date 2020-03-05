@@ -12,7 +12,7 @@ public class DatabaseFood
      * Pada bagian ini hanya menggunakan variable listFood.
      * Adapun tipe data yang digunakan yaitu string[]
      */
-    private String[] listFood;
+    private static String[] listFood;
 
     /**
      * Constructor for objects of class Location
@@ -36,7 +36,7 @@ public class DatabaseFood
      * Pada method ini, boolean digunakan untuk menghasilkan data berupa
      * ada atau tidak data makanan
      */
-    public boolean addFood(Food food)
+    public static boolean addFood(Food food)
     {
         // put your code here
         return false;
@@ -48,9 +48,14 @@ public class DatabaseFood
      * Pada method ini, boolean digunakan untuk menghasilkan data berupa
      * pilihan ya atau tidak untuk menghapus makanan
      */
-    public boolean removeFood(Food food)
+    public static boolean removeFood(Food food)
     {
         return false;
+    }
+    
+    public Food getFood()
+    {
+        return null;
     }
     
     /** 
@@ -58,7 +63,7 @@ public class DatabaseFood
      * true dan false.
      * Pada bagian ini untuk menampilkan list makanan
      */
-    public String[] getListFood(String[] listFood)
+    public static String[] getListFood(String[] listFood)
     {
         return listFood;
     }

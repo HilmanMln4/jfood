@@ -15,7 +15,7 @@ public class Food
     private int id;
     private String name;
     private int price;
-    private String category;
+    private FoodCategory category;
     private Seller seller;
 
     /**
@@ -24,7 +24,7 @@ public class Food
      * Constructor sendiri berfungsi untuk memberikan nilai awal pada sebuah class ketika class tersebut dibuat dalam bentuk objek pada class lain
      * Parameter yang  digunakan yaitu id, name, seller, price, dan category
      */
-    public Food(int id, String name, int price, String category, Seller seller)
+    public Food(int id, String name, int price, FoodCategory category, Seller seller)
     {
         this.id = id;
         this.name = name;
@@ -73,7 +73,7 @@ public class Food
      * method getter Category akan menampilkan return value sesuai dengan variable yang bersangkutan
      * Getter Category untuk Food
      */
-    public String getCategory()
+    public FoodCategory getCategory()
     {
         return category;
     }
@@ -118,7 +118,7 @@ public class Food
      * method setter Category akan set sebuah nilai sesuai dengan variable
      * Setter Category untuk Food
      */
-    public void setCategory(String category)
+    public void setCategory(FoodCategory category)
     {
         this.category=category;
     }
@@ -128,6 +128,12 @@ public class Food
      */
     public void printData()
     {
-        System.out.println(getName());
+        System.out.println("================FOOD===============");
+        System.out.println("ID:" + getId());
+        System.out.println("Name:" + getName());
+        System.out.println("Seller:" + getSeller().getName());
+        System.out.println("City:" + getSeller().getLocation().getCity());
+        System.out.println("Price:" + getPrice());
+        System.out.println("Category:" + getCategory());
     }
 }

@@ -4,7 +4,7 @@
  * @author Hilman Maulana 1706985975
  * @version 27 Februari 2020
 **/
-public class Invoice
+public abstract class Invoice
 {
     // instance variables - replace the example below with your own
     /** bagian variable
@@ -13,12 +13,11 @@ public class Invoice
      * Kemudian variable yang digunakan yaitu id, idfood, date, totalPrice, custsomer
      */
     private int id;
-    private int idFood;
+    private Food food;
     private String date;
-    private int totalPrice;
+    protected int totalPrice;
     private Customer customer;
-    private PaymentType paymentType;
-    private InvoiceStatus status;
+    private InvoiceStatus invoiceStatus;
 
     /**
      * Constructor for objects of class Invoice
@@ -26,15 +25,13 @@ public class Invoice
      * Constructor sendiri berfungsi untuk memberikan nilai awal pada sebuah class ketika class tersebut dibuat dalam bentuk objek pada class lain
      * Parameter yang  digunakan yaitu id, idfood, date, customer, dan totalprice.
      */
-    public Invoice(int id, int idFood, String date, Customer customer, int totalPrice, InvoiceStatus status)
+    public Invoice(int id, Food food, String date, Customer customer, InvoiceStatus invoiceStatus)
     {
         this.id=id;
-        this.idFood=idFood;
+        this.food=food;
         this.date=date;
         this.customer=customer;
-        this.totalPrice=totalPrice;
-        this.paymentType=paymentType;
-        this.status=status;
+        this.invoiceStatus=invoiceStatus;
     }
 
     /** 
@@ -50,9 +47,9 @@ public class Invoice
      * method getter IdFood akan menampilkan return value sesuai dengan variable yang bersangkutan
      * Getter IdFood untuk Invoice
      */
-    public int getIdFood()
+    public Food getFood()
     {
-        return idFood;
+        return food;
     }
     
     /** 
@@ -82,14 +79,11 @@ public class Invoice
         return customer=customer;
     }
     
-    public PaymentType getPaymentType()
-    {
-        return paymentType=paymentType;
-    }
+    public abstract PaymentType getPaymentType();
     
     public InvoiceStatus getInvoiceStatus()
     {
-        return status=status;
+        return invoiceStatus=invoiceStatus;
     }
     
     /**
@@ -105,9 +99,9 @@ public class Invoice
      * method setter IdFoods akan set sebuah nilai sesuai dengan variable
      * Setter IdFoods untuk Invoice
      */
-    public void setIdFoods(int idFood)
+    public void setfood(Food food)
     {
-        this.idFood=idFood;
+        this.food=food;
     }
     
     /**
@@ -123,10 +117,7 @@ public class Invoice
      * method setter TotalPrice akan set sebuah nilai sesuai dengan variable
      * Setter TotalPrice untuk Invoice
      */
-    public void setTotalPrice(int totalPrice)
-    {
-        this.totalPrice=totalPrice;
-    }
+    public abstract void setTotalPrice();
     
     /**
      * method setter Customer akan set sebuah nilai sesuai dengan variable
@@ -136,28 +127,14 @@ public class Invoice
     {
         this.customer=customer;
     }
-    
-    public void setPaymentType(PaymentType paymentType)
+      
+    public void setInvoiceStatus(InvoiceStatus invoiceStatus)
     {
-        this.paymentType=paymentType;
-    }
-    
-    public void setInvoiceStatus(InvoiceStatus status)
-    {
-        this.status=status;
+        this.invoiceStatus=invoiceStatus;
     }
     
     /**
      * Untuk mencetak data sesuai dengan value dalam kurung
      */
-    public void printData()
-    {
-        System.out.println("==========INVOICE==========");
-        System.out.println("ID:" + getId());
-        System.out.println("Food ID:" + getIdFood());
-        System.out.println("Date:" + getDate());
-        System.out.println("Customer:" + getCustomer().getName());
-        System.out.println("Total Price:" + getTotalPrice());
-        System.out.println("Status:" + getInvoiceStatus());
-    }
+    public abstract void printData();
 }

@@ -8,7 +8,7 @@
 public class CashlessInvoice extends Invoice
 {
     // instance variables - replace the example below with your own
-    private PaymentType PAYMENT_TYPE;
+    private PaymentType PAYMENT_TYPE=PaymentType.Cashless;
     private Promo promo;
 
     /**
@@ -49,37 +49,35 @@ public class CashlessInvoice extends Invoice
     
     public void setTotalPrice()
     {
-        if(getPromo()!=null && getPromo().getActive() == true && getFood().getPrice() > getPromo().getMinPrice())
+        if (getPromo() != null && getPromo().getActive() == true && getFood().getPrice() > 
+        getPromo().getMinPrice())
         {
-            super.totalPrice=getFood().getPrice()-getPromo().getDiscount();
+            this.totalPrice = getFood().getPrice() - getPromo().getDiscount();
         }
         
         else
         {
-            super.totalPrice=getFood().getPrice();
+            this.totalPrice = getFood().getPrice();
         }
     }
     
     
     public void printData()
     {
+        setTotalPrice();
         System.out.println("=====CashlessInvoice=====");
         System.out.println("Id:" + getId());
         System.out.println("Food:" + getFood().getName());
         System.out.println("Date:" + getDate());
         System.out.println("Customer:" + getCustomer().getName());
         System.out.println("Invoice Status:" + getInvoiceStatus());
-        System.out.println("Payment Type:" + getPaymentType());
-        System.out.println("Promo:");
+        System.out.println("Total Price:" + getTotalPrice());
+        System.out.println("Payment Type:" +PAYMENT_TYPE);
         
-        if(getPromo()!=null && getPromo().getActive() == true && getFood().getPrice() > getPromo().getMinPrice())
+        if(getPromo() != null && getPromo().getActive() == true && getFood().getPrice() >
+        getPromo().getMinPrice())
         {
-            System.out.println(totalPrice=getFood().getPrice()-getPromo().getDiscount());
-        }
-        
-        else
-        {
-            System.out.println(totalPrice=getFood().getPrice());
+            System.out.println("Promo: " + getPromo().getCode());
         }
     }
 }

@@ -55,7 +55,7 @@ public class Promo
     
     public boolean getActive()
     {
-        return false;
+        return active;
     }
     
     public void setId(int id)
@@ -80,16 +80,16 @@ public class Promo
     
     public void setActive(boolean active)
     {
-        this.active=active;
+        this.id=id;
     }
     
     public void printData()
     {
-        System.out.println("=====Promo=====");
+        /*System.out.println("=====Promo=====");
         System.out.println("Id:" + getId());
         System.out.println("Code:" + getCode());
         System.out.println("Discount:" + getDiscount());
         System.out.println("Minimal Price:" + getMinPrice());
-        System.out.println("Active:" + getActive());
+        System.out.println("Active:" + getActive());*/
     }
 }

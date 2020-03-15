@@ -34,6 +34,10 @@ public abstract class Invoice
         this.invoiceStatus=invoiceStatus;
     }
 
+    public void invoice()
+    {
+    }
+    
     /** 
      * method getter Id akan menampilkan return value sesuai dengan variable yang bersangkutan
      * Getter Id untuk Invoice
@@ -83,7 +87,7 @@ public abstract class Invoice
     
     public InvoiceStatus getInvoiceStatus()
     {
-        return invoiceStatus=invoiceStatus;
+        return invoiceStatus;
     }
     
     /**
@@ -117,7 +121,10 @@ public abstract class Invoice
      * method setter TotalPrice akan set sebuah nilai sesuai dengan variable
      * Setter TotalPrice untuk Invoice
      */
-    public abstract void setTotalPrice();
+    public void setTotalPrice()
+    {
+        this.totalPrice=totalPrice;
+    }
     
     /**
      * method setter Customer akan set sebuah nilai sesuai dengan variable

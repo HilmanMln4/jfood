@@ -8,7 +8,7 @@
 public class DatabasePromo
 {
     // instance variables - replace the example below with your own
-    private String[] listPromo;
+    private static String[] listPromo;
 
     /**
      * Constructor for objects of class DatabaseCustomer
@@ -24,22 +24,22 @@ public class DatabasePromo
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public boolean addPromo(Promo promo)
+    public static boolean addPromo(Promo promo)
     {
-        return false;
+        return true;
     }
     
-    public boolean removePromo(Promo promo)
+    public static boolean removePromo(Promo promo)
     {
-        return false;
+        return true;
     }
     
-    public Promo getPromo()
+    public static Promo getPromo()
     {
         return null;
     }
     
-    public String[] getListPromo(String[] args)
+    public static String[] getListPromo(String[] args)
     {
         return listPromo;
     }

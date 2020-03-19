@@ -123,9 +123,13 @@ public class Food
         this.category=category;
     }
     
-    /**
+    public String toString()
+    {
+        return id+""+name+""+seller.getName()+""+seller.getLocation().getCity()+""+price+""+category;
+    }
+    /*/**
      * Untuk mencetak data sesuai dengan value dalam kurung
-     */
+     
     public void printData()
     {
         System.out.println("================FOOD===============");
@@ -135,5 +139,5 @@ public class Food
         System.out.println("City:" + getSeller().getLocation().getCity());
         System.out.println("Price:" + getPrice());
         System.out.println("Category:" + getCategory());
-    }
+    }*/
 }

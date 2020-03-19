@@ -123,11 +123,16 @@ public class Seller
         this.location=location;
     }
     
-    /**
+    public String toString()
+    {
+        return id+""+name+""+phoneNumber+""+location;
+    }
+    
+    /*/**
      * Untuk mencetak data sesuai dengan value dalam kurung
-     */
+     *
     public void printData()
     {
         System.out.println(getName());
-    }
+    }*/
 }

@@ -86,11 +86,16 @@ public class Location
         this.description=description;
     }
     
-    /**
+    public String toString()
+    {
+        return province+""+city+""+description;
+    }
+    
+    /*/**
      * Untuk mencetak data sesuai dengan value dalam kurung
-     */
+     *
     public void printData()
     {
         System.out.println(getProvince());
-    }
+    }*/
 }

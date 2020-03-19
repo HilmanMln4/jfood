@@ -1,3 +1,7 @@
+import java.util.Calendar;
+import java.util.*;
+import java.text.*;
+import java.util.regex.*;
 
 /**
  * Kelas Customer merupakan bagian dari JFood yang menangani data pembeli yang terdiri dari id, nama, email, password, joindate
@@ -18,7 +22,7 @@ public class Customer
     private String name;
     private String email;
     private String password;
-    private String joinDate;
+    private Calendar joinDate;
 
     /**
      * Constructor for objects of class Seller
@@ -26,15 +30,35 @@ public class Customer
      * Constructor sendiri berfungsi untuk memberikan nilai awal pada sebuah class ketika class tersebut dibuat dalam bentuk objek pada class lain
      * Parameter yang  digunakan yaitu id, name, email, password, dan joindate.
      */
-    public Customer(int id, String name, String email, String password, String joinDate)
+    public Customer(int id, String name, String email, String password, Calendar joinDate)
     {
         this.id=id;
         this.name=name;
         this.email=email;
         this.password=password;
         this.joinDate=joinDate;
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String strDate= formatter.format(joinDate);
+        
     }
 
+    public Customer(int id, String name, String email, String password, int year, int month, int dayOfMonth)
+    {
+        this.id=id;
+        this.name=name;
+        this.email=email;
+        this.password=password;
+        joinDate=new GregorianCalendar(dayOfMonth, month, year);
+    }
+    
+    public Customer(int id, String name, String email, String password)
+    {
+        this.id=id;
+        this.name=name;
+        this.email=email;
+        this.password=password;
+    }
+    
     /** 
      * method getter Id akan menampilkan return value sesuai dengan variable yang bersangkutan
      * Getter Id untuk Customer
@@ -75,7 +99,7 @@ public class Customer
      * method getter JoinDate akan menampilkan return value sesuai dengan variable yang bersangkutan
      * Getter JoinDate untuk Customer
      */
-    public String getJoinDate()
+    public Calendar getJoinDate()
     {
         return joinDate;
     }
@@ -104,7 +128,10 @@ public class Customer
      */
     public void setEmail(String email)
     {
-        this.email=email;
+        String regex = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+        this.email = (matcher.matches())?email: null;
     }
     
     /**
@@ -113,23 +140,46 @@ public class Customer
      */
     public void setPassword(String password)
     {
-        this.password=password;
+        String passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$";
+        Pattern passwordPattern = Pattern.compile(passwordRegex);
+        Matcher passwordMatcher = passwordPattern.matcher(password);
+        this.password = (passwordMatcher.matches())?password: null;
     }
     
     /**
      * method setter JoinDate akan set sebuah nilai sesuai dengan variable
      * Setter JoinDate untuk Customer
      */
-    public void setJoinDate(String joinDate)
+    public void setJoinDate(Calendar joinDate)
     {
         this.joinDate=joinDate;
     }  
     
-     /**
+    public void setJoinDate(int year, int month, int dayOfMonth)
+    {
+         joinDate = new GregorianCalendar (dayOfMonth, month, year);
+    }
+    
+    public String toString()
+    {
+       if(joinDate != null)
+       {
+           return "ID:"+id+"\nName: "+name+"\nEmail: "+email+"\nPassword: "+password+"\nJoin Date: "+
+           joinDate.get(Calendar.DAY_OF_MONTH)+"/"+
+           joinDate.get(Calendar.MONTH)+"/"+
+           joinDate.get(Calendar.YEAR)+"\n";
+        }
+       else
+       {    
+           return "ID:"+id+"\nName: "+name+"\nEmail: "+email+"\nPassword: "+password+"\n";
+        }
+    }
+
+    /* /**
      * Untuk mencetak data sesuai dengan value dalam kurung
-     */
+     
     public void printData()
     {
         System.out.println(getName());
-    }
+    }*/
 }

@@ -83,6 +83,12 @@ public class Promo
         this.id=id;
     }
     
+    public String toString()
+    {
+        return id+""+code+""+discount+""+minPrice+""+active;
+    }
+    
+    /*
     public void printData()
     {
         /*System.out.println("=====Promo=====");
@@ -90,6 +96,6 @@ public class Promo
         System.out.println("Code:" + getCode());
         System.out.println("Discount:" + getDiscount());
         System.out.println("Minimal Price:" + getMinPrice());
-        System.out.println("Active:" + getActive());*/
-    }
+        System.out.println("Active:" + getActive());
+    }*/
 }

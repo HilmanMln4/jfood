@@ -22,8 +22,8 @@ public class JFood
         Food Mekdi = new Food(444,"Ayam Bucket", 75000, FoodCategory.Western, Jaya);
         Food Kfc = new Food(445, "French Fries", 20000, FoodCategory.Western, Jaya);
         Promo diskon = new Promo (111, "Post Test dapet 100", 50000, 50000, true);*/
-        Customer Niko = new Customer(456, "Niko", "Nikooouiacid", "88888888", new GregorianCalendar(2019,03,20));
-        Customer Nika = new Customer(457, "Nika", "nikaaa@ui.ac.id", "Hehehe12456", 2019, 03, 19);
+        Customer Niko = new Customer(456, "Niko", "Nichooouiacid", "99999999", new GregorianCalendar(2019,02,20));
+        Customer Nika = new Customer(457, "Nika", "nikaaa@ui.ac.id", "Hehehe12456", 2019, 02, 19);
         Customer Niki = new Customer(458, "Niki", "nikiii@ui.ac.id", "Hehehe12567");
         
        

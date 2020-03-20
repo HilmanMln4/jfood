@@ -73,13 +73,13 @@ public class CashInvoice extends Invoice
         String string = "";
         if(deliveryFee == 0)
         {
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+            DateTimeFormatter waktu = DateTimeFormatter.ofPattern("dd MMMM yyyy");
             LocalDateTime now = LocalDateTime.now(); 
             string=
             ("================INVOICE================" +
             "\nID: " +super.getId() +
             "\nFood: " +super.getFood().getName() +
-            "\nDate: " +dtf.format(now)+
+            "\nDate: " +waktu.format(now)+
             "\nCustomer: " +super.getCustomer().getName() +
             "\nTotal Price: " +getFood().getPrice() +
             "\nStatus: " +super.getInvoiceStatus() +
@@ -87,13 +87,13 @@ public class CashInvoice extends Invoice
         }
         else
         {
-            DateTimeFormatter skrg = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+            DateTimeFormatter waktu1 = DateTimeFormatter.ofPattern("dd MMMM yyyy");
             LocalDateTime now = LocalDateTime.now(); 
             string=
             ("================INVOICE================" +
             "\nID: " +super.getId() +
             "\nFood: " +super.getFood().getName() +
-            "\nDate: " +skrg.format(now)+
+            "\nDate: " +waktu1.format(now)+
             "\nCustomer: " +super.getCustomer().getName() +
             "\nDeliveryFee : " + getDeliveryFee() +
             "\nTotal Price: " +super.getTotalPrice() +

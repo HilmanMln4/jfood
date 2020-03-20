@@ -123,12 +123,12 @@ public abstract class Invoice
      */
     public Calendar setDate(Calendar date)
     {
-        this.date=date;
+        return date;
     }
     
     public Calendar setDate(int year, int month, int dayOfMonth)
     {
-        this.date=new GregorianCalendar(year, month-1, dayOfMonth);
+        return date=new GregorianCalendar(year, month-1, dayOfMonth);
     }
     
     /**
@@ -154,13 +154,42 @@ public abstract class Invoice
         this.invoiceStatus=invoiceStatus;
     }
     
-    public String toString()
-    {
-        return ;
-    }
+    /*public abstract String toString()
+    {  
+         if(deliveryFee<0)
+        {
+            return
+            ("================INVOICE================" +
+            "\nID: " +super.getId() +
+            "\nFood: " +super.getFood().getName() +
+            "\nDate: " +super.getDate() +
+            "\nCustomer: " +super.getCustomer().getName() +
+            "\nDelivery Fee : " + 0+ 
+            "\nTotal Price: " +getFood().getPrice() +
+            "\nStatus: " +super.getInvoiceStatus() +
+            "\nPayment Type: " +PAYMENT_TYPE + "\n");
+            
+        }
+        else
+        {
+            
+            return
+            ("================INVOICE================" +
+            "\nID: " +super.getId() +
+            "\nFood: " +super.getFood().getName() +
+            "\nDate: " +super.getDate() +
+            "\nCustomer: " +super.getCustomer().getName() +
+            "\nDelivery Fee : " + this.getDeliveryFee() +
+            "\nTotal Price: " +super.getTotalPrice() +
+            "\nStatus: " +super.getInvoiceStatus() +
+            "\nPayment Type: " +PAYMENT_TYPE + "\n");
+            
+        }
+        
+    } ;*/
+ }
         
     /* /**
      * Untuk mencetak data sesuai dengan value dalam kurung
      *
     public abstract void printData();*/
-}

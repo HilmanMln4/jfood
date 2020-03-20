@@ -1,4 +1,15 @@
-
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.*;
+import java.text.*;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.regex.*;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+import java.util.Scanner;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 /**
  * Write a description of class CashlessInvoice here.
  *
@@ -62,22 +73,43 @@ public class CashlessInvoice extends Invoice
     }
     
     
-    public String toString()
+     public String toString()
     {
-        setTotalPrice();
-        System.out.println("=====CashlessInvoice=====");
-        System.out.println("Id:" + getId());
-        System.out.println("Food:" + getFood().getName());
-        System.out.println("Date:" + getDate());
-        System.out.println("Customer:" + getCustomer().getName());
-        System.out.println("Invoice Status:" + getInvoiceStatus());
-        System.out.println("Total Price:" + getTotalPrice());
-        System.out.println("Payment Type:" +PAYMENT_TYPE);
+
         
-        if(getPromo() != null && getPromo().getActive() == true && getFood().getPrice() >
-        getPromo().getMinPrice())
+        String string = "";
+        if(promo == null || 
+        promo.getActive() == false || 
+        getFood().getPrice() < getPromo().getMinPrice())
         {
-            System.out.println("Promo: " + getPromo().getCode());
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+            LocalDateTime now = LocalDateTime.now(); 
+            string=
+            ("================INVOICE================" +
+            "\nID: " +super.getId() +
+            "\nFood: " +super.getFood().getName() +
+            "\nDate: " +dtf.format(now)+
+            "\nCustomer: " +super.getCustomer().getName() +
+            "\nTotal Price: " +getFood().getPrice() +
+            "\nStatus: " +super.getInvoiceStatus() +
+            "\nPayment Type: " +PAYMENT_TYPE + "\n");
         }
+        else
+        {
+            DateTimeFormatter skrg = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+            LocalDateTime now = LocalDateTime.now(); 
+            string=
+            ("================INVOICE================" +
+            "\nID: " +super.getId() +
+            "\nFood: " +super.getFood().getName() +
+            "\nDate: " +skrg.format(now)+ 
+            "\nCustomer: " +super.getCustomer().getName() +
+            "\nPromo : " + getPromo().getCode() +
+            "\nTotal Price: " +super.getTotalPrice() +
+            "\nStatus: " +super.getInvoiceStatus() +
+            "\nPayment Type: " +PAYMENT_TYPE + "\n");
+        }
+        System.out.println(string);
+        return string;
     }
 }

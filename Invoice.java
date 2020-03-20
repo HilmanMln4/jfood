@@ -1,3 +1,11 @@
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.text.*;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+import java.util.regex.*;
 /**
  * Kelas Invoice merupakan bagian dari JFood yang menangani data pembelian yang terdiri dari id, idfood, date, totalPrice, custsomer
  * Class adalah “blueprint” atau “cetakan” untuk menciptakan suatu  object.
@@ -14,7 +22,7 @@ public abstract class Invoice
      */
     private int id;
     private Food food;
-    private String date;
+    private Calendar date;
     protected int totalPrice;
     private Customer customer;
     private InvoiceStatus invoiceStatus;
@@ -25,18 +33,19 @@ public abstract class Invoice
      * Constructor sendiri berfungsi untuk memberikan nilai awal pada sebuah class ketika class tersebut dibuat dalam bentuk objek pada class lain
      * Parameter yang  digunakan yaitu id, idfood, date, customer, dan totalprice.
      */
-    public Invoice(int id, Food food, String date, Customer customer, InvoiceStatus invoiceStatus)
+    public Invoice(int id, Food food, /*Calendar date,*/ Customer customer, InvoiceStatus invoiceStatus)
     {
         this.id=id;
         this.food=food;
-        this.date=date;
+        //this.date=date;
+        Date date = new Date();
         this.customer=customer;
         this.invoiceStatus=invoiceStatus;
     }
 
-    public void invoice()
+    /*public void invoice()
     {
-    }
+    }*/
     
     /** 
      * method getter Id akan menampilkan return value sesuai dengan variable yang bersangkutan
@@ -60,7 +69,7 @@ public abstract class Invoice
      * method getter Date akan menampilkan return value sesuai dengan variable yang bersangkutan
      * Getter Date untuk Invoice
      */
-    public String getDate()
+    public Calendar getDate()
     {
         return date;
     }
@@ -112,9 +121,14 @@ public abstract class Invoice
      * method setter Date akan set sebuah nilai sesuai dengan variable
      * Setter Date untuk Invoice
      */
-    public void setDate(String date)
+    public Calendar setDate(Calendar date)
     {
         this.date=date;
+    }
+    
+    public Calendar setDate(int year, int month, int dayOfMonth)
+    {
+        this.date=new GregorianCalendar(year, month-1, dayOfMonth);
     }
     
     /**
@@ -140,8 +154,13 @@ public abstract class Invoice
         this.invoiceStatus=invoiceStatus;
     }
     
-    /**
+    public String toString()
+    {
+        return ;
+    }
+        
+    /* /**
      * Untuk mencetak data sesuai dengan value dalam kurung
-     */
-    public abstract void printData();
+     *
+    public abstract void printData();*/
 }

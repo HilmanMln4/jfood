@@ -14,9 +14,9 @@ public class CashInvoice extends Invoice
     /**
      * Constructor for objects of class CashInvoice
      */
-    public CashInvoice(int id, Food food, String date, Customer customer, InvoiceStatus invoiceStatus)
+    public CashInvoice(int id, Food food, Customer customer, InvoiceStatus invoiceStatus)
     {
-        super(id, food, date, customer, invoiceStatus);
+        super(id, food, customer, invoiceStatus);
     }
 
         /**
@@ -25,9 +25,9 @@ public class CashInvoice extends Invoice
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public CashInvoice(int id, Food food, String date, Customer customer, InvoiceStatus invoiceStatus, int deliveryFee)
+    public CashInvoice(int id, Food food, Customer customer, InvoiceStatus invoiceStatus, int deliveryFee)
     {
-        super(id, food, date, customer, invoiceStatus);
+        super(id, food, customer, invoiceStatus);
         this.deliveryFee=deliveryFee;
     }
     
@@ -54,7 +54,7 @@ public class CashInvoice extends Invoice
         {super.totalPrice=getFood().getPrice();}
     }
     
-    public void printData()
+    public String toString()
     {
         setTotalPrice();
         System.out.println("=====CashInvoice=====");

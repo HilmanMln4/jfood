@@ -1,6 +1,10 @@
 import java.util.Calendar;
-import java.util.*;
+import java.util.GregorianCalendar;
 import java.text.*;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 import java.util.regex.*;
 
 /**
@@ -34,29 +38,26 @@ public class Customer
     {
         this.id=id;
         this.name=name;
-        this.email=email;
-        this.password=password;
+        setPassword(password);
+        setEmail(email);
         this.joinDate=joinDate;
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        String strDate= formatter.format(joinDate);
-        
     }
 
     public Customer(int id, String name, String email, String password, int year, int month, int dayOfMonth)
     {
         this.id=id;
         this.name=name;
-        this.email=email;
-        this.password=password;
-        joinDate=new GregorianCalendar(dayOfMonth, month, year);
+        setPassword(password);
+        setEmail(email);
+        joinDate=new GregorianCalendar(year, month, dayOfMonth);
     }
     
     public Customer(int id, String name, String email, String password)
     {
         this.id=id;
         this.name=name;
-        this.email=email;
-        this.password=password;
+        setPassword(password);
+        setEmail(email);
     }
     
     /** 
@@ -131,7 +132,14 @@ public class Customer
         String regex = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
-        this.email = (matcher.matches())?email: null;
+        if(matcher.matches())
+        {
+            this.email=email;
+        }
+        else 
+        {
+            this.email="";
+        }
     }
     
     /**
@@ -143,7 +151,14 @@ public class Customer
         String passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$";
         Pattern passwordPattern = Pattern.compile(passwordRegex);
         Matcher passwordMatcher = passwordPattern.matcher(password);
-        this.password = (passwordMatcher.matches())?password: null;
+        if(passwordMatcher.matches())
+        {
+            this.password=password;
+        }
+        else
+        {
+            this.password="";
+        }
     }
     
     /**
@@ -157,22 +172,26 @@ public class Customer
     
     public void setJoinDate(int year, int month, int dayOfMonth)
     {
-         joinDate = new GregorianCalendar (dayOfMonth, month, year);
+         joinDate = new GregorianCalendar (year, month, dayOfMonth);
     }
     
     public String toString()
     {
+       String hasil = "";
        if(joinDate != null)
        {
-           return "ID:"+id+"\nName: "+name+"\nEmail: "+email+"\nPassword: "+password+"\nJoin Date: "+
-           joinDate.get(Calendar.DAY_OF_MONTH)+"/"+
-           joinDate.get(Calendar.MONTH)+"/"+
-           joinDate.get(Calendar.YEAR)+"\n";
-        }
+           Date tanggal = joinDate.getTime();
+           SimpleDateFormat format1= new SimpleDateFormat("dd-MM-yyyy");
+           String tanggal1=format1.format(tanggal);
+           hasil= "ID:"+id+"\nName: "+name+"\nEmail: "+email+"\nPassword: "+password+"\nJoin Date: "+tanggal1+"\n";;
+           
+       }
        else
        {    
-           return "ID:"+id+"\nName: "+name+"\nEmail: "+email+"\nPassword: "+password+"\n";
-        }
+           hasil="ID:"+id+"\nName: "+name+"\nEmail: "+email+"\nPassword: "+password+"\n";
+       }
+       
+       return hasil;
     }
 
     /* /**

@@ -75,41 +75,31 @@ public class CashlessInvoice extends Invoice
     
      public String toString()
     {
-
+        String date = "";
+        SimpleDateFormat tgl=new SimpleDateFormat("dd MMMM yyyy");
         
-        String string = "";
-        if(promo == null || 
-        promo.getActive() == false || 
-        getFood().getPrice() < getPromo().getMinPrice())
+        if(promo == null || promo.getActive() == false || getFood().getPrice() < getPromo().getMinPrice())
         {
-            DateTimeFormatter waktu = DateTimeFormatter.ofPattern("dd MMMM yyyy");
-            LocalDateTime now = LocalDateTime.now(); 
-            string=
-            ("================INVOICE================" +
+            return "================INVOICE================" +
             "\nID: " +super.getId() +
             "\nFood: " +super.getFood().getName() +
-            "\nDate: " +waktu.format(now)+
+            "\nDate: " +date+
             "\nCustomer: " +super.getCustomer().getName() +
             "\nTotal Price: " +getFood().getPrice() +
             "\nStatus: " +super.getInvoiceStatus() +
-            "\nPayment Type: " +PAYMENT_TYPE + "\n");
+            "\nPayment Type: " +PAYMENT_TYPE + "\n";
         }
         else
         {
-            DateTimeFormatter waktu1 = DateTimeFormatter.ofPattern("dd MMMM yyyy");
-            LocalDateTime now = LocalDateTime.now(); 
-            string=
-            ("================INVOICE================" +
+            return "================INVOICE================" +
             "\nID: " +super.getId() +
             "\nFood: " +super.getFood().getName() +
-            "\nDate: " +waktu1.format(now)+ 
+            "\nDate: " +date+ 
             "\nCustomer: " +super.getCustomer().getName() +
             "\nPromo : " + getPromo().getCode() +
             "\nTotal Price: " +super.getTotalPrice() +
             "\nStatus: " +super.getInvoiceStatus() +
-            "\nPayment Type: " +PAYMENT_TYPE + "\n");
+            "\nPayment Type: " +PAYMENT_TYPE + "\n";
         }
-        System.out.println(string);
-        return string;
     }
 }

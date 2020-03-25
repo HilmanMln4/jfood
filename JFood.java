@@ -32,17 +32,18 @@ public class JFood
         CashlessInvoice TapCash = new CashlessInvoice(222, Mekdi, Niko, InvoiceStatus.Ongoing);
         CashlessInvoice eMoney = new CashlessInvoice(333, Kfc, Niko, InvoiceStatus.Ongoing, diskon);
         CashlessInvoice Flazz = new CashlessInvoice(444, Mekdi, Nika, InvoiceStatus.Ongoing, diskon);
+        TapCash.setTotalPrice();
+        eMoney.setTotalPrice();
+        Flazz.setTotalPrice();
         //Invoice Bayar = new Invoice(444, Mekdi.getId(), "28 Februari 2019", Niko, Mekdi.getPrice(), InvoiceStatus.Finished);*/
-        CashInvoice rupiah = new CashInvoice(1, Kfc, Nika, InvoiceStatus.Finished, 0);
+        CashInvoice rupiah = new CashInvoice(1, Kfc, Nika, InvoiceStatus.Finished);
         CashInvoice rupiaah = new CashInvoice(2, Mekdi, Niko, InvoiceStatus.Finished, 5000);
         rupiah.setTotalPrice();
         rupiaah.setTotalPrice();
-        rupiah.toString();
-        rupiaah.toString();
-        /*TapCash.setTotalPrice();
-        eMoney.setTotalPrice();
-        Flazz.setTotalPrice();
-        TapCash.printData();
+        System.out.println(rupiah.toString());
+        System.out.println(rupiaah.toString());
+        
+        /*TapCash.printData();
         eMoney.printData();
         Flazz.printData();*/
     }

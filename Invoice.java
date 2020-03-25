@@ -1,11 +1,15 @@
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.*;
 import java.text.*;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.regex.*;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
-import java.util.regex.*;
+import java.util.Scanner;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 /**
  * Kelas Invoice merupakan bagian dari JFood yang menangani data pembelian yang terdiri dari id, idfood, date, totalPrice, custsomer
  * Class adalah “blueprint” atau “cetakan” untuk menciptakan suatu  object.
@@ -35,12 +39,13 @@ public abstract class Invoice
      */
     public Invoice(int id, Food food, /*Calendar date,*/ Customer customer, InvoiceStatus invoiceStatus)
     {
+        this.date=Calendar.getInstance();
         this.id=id;
         this.food=food;
         //this.date=date;
-        Date date = new Date();
         this.customer=customer;
         this.invoiceStatus=invoiceStatus;
+        
     }
 
     /*public void invoice()
@@ -121,14 +126,14 @@ public abstract class Invoice
      * method setter Date akan set sebuah nilai sesuai dengan variable
      * Setter Date untuk Invoice
      */
-    public Calendar setDate(Calendar date)
+    public void setDate(Calendar date)
     {
-        return date;
+        this.date=date;
     }
     
-    public Calendar setDate(int year, int month, int dayOfMonth)
+    public void setDate(int year, int month, int dayOfMonth)
     {
-        return date=new GregorianCalendar(year, month-1, dayOfMonth);
+        this.date=new GregorianCalendar(year, month-1, dayOfMonth);
     }
     
     /**

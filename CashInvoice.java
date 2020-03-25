@@ -70,37 +70,37 @@ public class CashInvoice extends Invoice
     {
      
         
-        String string = "";
+        String date = "";
+        SimpleDateFormat tgl=new SimpleDateFormat("dd MMMM yyyy");
+        
+        if(super.getDate() !=null)
+        {
+            date=tgl.format(getDate().getTime());
+        }
+        
         if(deliveryFee == 0)
         {
-            DateTimeFormatter waktu = DateTimeFormatter.ofPattern("dd MMMM yyyy");
-            LocalDateTime now = LocalDateTime.now(); 
-            string=
-            ("================INVOICE================" +
+           
+            return "================INVOICE================" +
             "\nID: " +super.getId() +
             "\nFood: " +super.getFood().getName() +
-            "\nDate: " +waktu.format(now)+
+            "\nDate: " +date+
             "\nCustomer: " +super.getCustomer().getName() +
             "\nTotal Price: " +getFood().getPrice() +
             "\nStatus: " +super.getInvoiceStatus() +
-            "\nPayment Type: " +PAYMENT_TYPE + "\n");
+            "\nPayment Type: " +PAYMENT_TYPE + "\n";
         }
         else
         {
-            DateTimeFormatter waktu1 = DateTimeFormatter.ofPattern("dd MMMM yyyy");
-            LocalDateTime now = LocalDateTime.now(); 
-            string=
-            ("================INVOICE================" +
+            return "================INVOICE================" +
             "\nID: " +super.getId() +
             "\nFood: " +super.getFood().getName() +
-            "\nDate: " +waktu1.format(now)+
+            "\nDate: " +date+
             "\nCustomer: " +super.getCustomer().getName() +
             "\nDeliveryFee : " + getDeliveryFee() +
             "\nTotal Price: " +super.getTotalPrice() +
             "\nStatus: " +super.getInvoiceStatus() +
-            "\nPayment Type: " +PAYMENT_TYPE + "\n");
+            "\nPayment Type: " +PAYMENT_TYPE + "\n";
         }
-        System.out.println(string);
-        return string;
     }
 }

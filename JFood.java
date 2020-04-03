@@ -45,6 +45,11 @@ public class JFood
             System.out.println(food.getName());
         }
 
+        DatabaseInvoice.addInvoice(new CashInvoice(DatabaseInvoice.getLastId()+1, DatabaseFood.getFoodDatabase(), DatabaseCustomer.getCustomerById(1), InvoiceStatus.Ongoing, 5000));
+        DatabaseInvoice.getInvoiceByCustomer(1);
+
+        DatabaseInvoice.addInvoice(new CashlessInvoice(DatabaseInvoice.getLastId()+1, DatabaseFood.getFoodDatabase(), DatabaseCustomer.getCustomerById(1), InvoiceStatus.Ongoing, 5000));
+        DatabaseInvoice.getInvoiceByCustomer(1);
         DatabaseCustomer.getCustomerById(DatabaseCustomer.getLastId());
         /*System.out.println(Niko.toString());
         System.out.println(Nika.toString());

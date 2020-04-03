@@ -33,7 +33,7 @@ public class DatabaseCustomer //Create the class DatabaseCustomer
         Customer returnValue = null;
         for(Customer customer : CUSTOMER_DATABASE)
         {
-            if(customer.getID() == id)
+            if(customer.getId() == id)
             {
                 returnValue = customer;
             }
@@ -52,7 +52,7 @@ public class DatabaseCustomer //Create the class DatabaseCustomer
             }
         }
         CUSTOMER_DATABASE.add(customer);
-        LastId = customer.getID();
+        LastId = customer.getId();
         return true;
 
     }
@@ -62,7 +62,7 @@ public class DatabaseCustomer //Create the class DatabaseCustomer
         boolean returnValue = false;
         for(Customer customerDB : CUSTOMER_DATABASE)
         {
-            if(customerDB.getID() == id)
+            if(customerDB.getId() == id)
             {
                 CUSTOMER_DATABASE.remove(id);
                 returnValue = true;

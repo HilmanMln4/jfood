@@ -10,7 +10,7 @@ public class DatabasePromo
 {
     // instance variables - replace the example below with your own
     private static int lastId=0;
-    private static ArrayList<Promo> PROMO_DATABASE;
+    private static ArrayList<Promo> PROMO_DATABASE = new ArrayList<Promo>();
 
     /**
      * Constructor for objects of class DatabaseCustomer
@@ -56,7 +56,7 @@ public class DatabasePromo
         return null;
     }
     
-    public boolean addPromo(Promo promo)
+    public static boolean addPromo(Promo promo)
     {
         PROMO_DATABASE.add(promo);
         lastId = promo.getId();

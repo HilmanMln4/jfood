@@ -65,12 +65,12 @@ public class DatabaseInvoice {
     }
 
     public static boolean removeInvoice(int id){
-        for(Invoice invoice : INVOICE_DATABASE){
-            if(invoice.getId() == id){
-                INVOICE_DATABASE.remove(invoice);
-                return true;
+            for(Invoice invoice : INVOICE_DATABASE){
+                if(invoice.getId() == id){
+                    INVOICE_DATABASE.remove(invoice);
+                    return true;
+                }
             }
+            return false;
         }
-        return false;
-    }
 }

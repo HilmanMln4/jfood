@@ -20,15 +20,15 @@ import java.time.LocalDateTime;
 public class CashInvoice extends Invoice
 {
     // instance variables - replace the example below with your own
-    private PaymentType PAYMENT_TYPE=PaymentType.Cash;
-    private int deliveryFee;
+    private static final PaymentType PAYMENT_TYPE=PaymentType.Cash;
+    int deliveryFee;
 
     /**
      * Constructor for objects of class CashInvoice
      */
-    public CashInvoice(int id, ArrayList<Food> foods, Customer customer /*InvoiceStatus invoiceStatus*/)
+    public CashInvoice(int id, ArrayList<Food> foods, Customer customer)
     {
-        super(id, foods, customer /*invoiceStatus*/);
+        super(id, foods, customer);
     }
 
         /**
@@ -37,9 +37,9 @@ public class CashInvoice extends Invoice
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public CashInvoice(int id, ArrayList<Food> foods, Customer customer /*InvoiceStatus invoiceStatus*/, int deliveryFee)
+    public CashInvoice(int id, ArrayList<Food> foods, Customer customer, int deliveryFee)
     {
-        super(id, foods, customer /*invoiceStatus*/);
+        super(id, foods, customer);
         this.deliveryFee=deliveryFee;
     }
     

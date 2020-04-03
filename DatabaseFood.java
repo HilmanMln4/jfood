@@ -12,8 +12,8 @@ public class DatabaseFood //Create the class DatabaseFood
      * declare the variables
      * of the DatabaseFood
      */
-    private static ArrayList<Food> FOOD_DATABASE=new ArrayList<Food>();;
-    private static int lastId;
+    public static ArrayList<Food> FOOD_DATABASE=new ArrayList<Food>();;
+    public static int lastId;
     public static ArrayList<Food> getFoodDatabase()
     {
         return FOOD_DATABASE;
@@ -41,7 +41,6 @@ public class DatabaseFood //Create the class DatabaseFood
             if (foods.getSeller().getId() == sellerId)
             {
                 list.add(foods);
-                return FOOD_DATABASE;
             }
         }
         return list;

@@ -40,20 +40,16 @@ public abstract class Invoice
      * Constructor sendiri berfungsi untuk memberikan nilai awal pada sebuah class ketika class tersebut dibuat dalam bentuk objek pada class lain
      * Parameter yang  digunakan yaitu id, idfood, date, customer, dan totalprice.
      */
-    public Invoice(int id, ArrayList<Food> foods, /*Calendar date,*/ Customer customer /*InvoiceStatus invoiceStatus*/)
+    public Invoice(int id, ArrayList<Food> foods, Customer customer)
     {
         //this.date=Calendar.getInstance();
         this.id=id;
         this.foods=foods;
         //this.date=date;
         this.customer=customer;
-        this.invoiceStatus=InvoiceStatus.Ongoing;
+        this.invoiceStatus=invoiceStatus.Ongoing;
         //private PaymentType PAYMENT_TYPE=PaymentType.Cashless
     }
-
-    /*public void invoice()
-    {
-    }*/
     
     /** 
      * method getter Id akan menampilkan return value sesuai dengan variable yang bersangkutan
@@ -159,42 +155,6 @@ public abstract class Invoice
         this.invoiceStatus=invoiceStatus;
     }
     
-    /*public abstract String toString()
-    {  
-         if(deliveryFee<0)
-        {
-            return
-            ("================INVOICE================" +
-            "\nID: " +super.getId() +
-            "\nFood: " +super.getFood().getName() +
-            "\nDate: " +super.getDate() +
-            "\nCustomer: " +super.getCustomer().getName() +
-            "\nDelivery Fee : " + 0+ 
-            "\nTotal Price: " +getFood().getPrice() +
-            "\nStatus: " +super.getInvoiceStatus() +
-            "\nPayment Type: " +PAYMENT_TYPE + "\n");
-            
-        }
-        else
-        {
-            
-            return
-            ("================INVOICE================" +
-            "\nID: " +super.getId() +
-            "\nFood: " +super.getFood().getName() +
-            "\nDate: " +super.getDate() +
-            "\nCustomer: " +super.getCustomer().getName() +
-            "\nDelivery Fee : " + this.getDeliveryFee() +
-            "\nTotal Price: " +super.getTotalPrice() +
-            "\nStatus: " +super.getInvoiceStatus() +
-            "\nPayment Type: " +PAYMENT_TYPE + "\n");
-            
-        }
-        
-    };*/
+    public abstract String toString();
  }
-        
-    /* /**
-     * Untuk mencetak data sesuai dengan value dalam kurung
-     *
-    public abstract void printData();*/
+

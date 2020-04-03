@@ -25,10 +25,10 @@ public class CashlessInvoice extends Invoice
     /**
      * Constructor for objects of class CashlessInvoice
      */
-    public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer/*InvoiceStatus invoiceStatus*/)
+    public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer)
     {
         // initialise instance variables
-        super(id, foods, customer /*invoiceStatus*/);
+        super(id, foods, customer);
     }
     
         /**
@@ -37,7 +37,7 @@ public class CashlessInvoice extends Invoice
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer /*InvoiceStatus invoiceStatus*/,Promo promo)
+    public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer ,Promo promo)
     {
         super(id, foods, customer /*invoiceStatus*/);
         this.promo=promo;
@@ -70,12 +70,7 @@ public class CashlessInvoice extends Invoice
     
     
      public String toString() {
-
-        //if(getPromo().getActive() == true)
-        //{
-        // System.out.println("Promo: " +    getPromo().getCode());
-        // }
-
+        
         String string = "";
         for (int i = 0; i <= getFood().size(); i++) {
 

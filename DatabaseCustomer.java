@@ -12,7 +12,7 @@ public class DatabaseCustomer //Create the class DatabaseCustomer
     // instance variables - replace the example below with your own
     //private static String[] listCustomer;
     private static ArrayList<Customer> CUSTOMER_DATABASE =  new ArrayList<Customer>();
-    private static int LastId = 0;
+    private static int lastId = 0;
 
     public DatabaseCustomer()
     {
@@ -25,40 +25,35 @@ public class DatabaseCustomer //Create the class DatabaseCustomer
     }
     public static int getLastId()
     {
-        return LastId;
+        return lastId;
     }
 
-    public static Customer getCustomerById(int id)
+    public static Customer getCustomerById(int id) throws CustomerNotFoundException
     {
-        Customer returnValue = null;
+
         for(Customer customer : CUSTOMER_DATABASE)
         {
             if(customer.getId() == id)
             {
-                returnValue = customer;
+                return customer;
             }
         }
-        return returnValue;
+        throw new CustomerNotFoundException(id);
     }
 
-    public static boolean addCustomer(Customer customer)
+    public static boolean addCustomer(Customer customer) throws EmailAlreadyExistsException
     {
-        for(Customer customerDB : CUSTOMER_DATABASE)
-        {
-            if(customer.getName().equals(customerDB.getName()) &&
-                    customer.getEmail().equals(customerDB.getEmail()))
-            {
-                return false;
+        for(Customer cust : CUSTOMER_DATABASE){
+            if(cust.getEmail() == customer.getEmail()){
+                throw new EmailAlreadyExistsException(customer);
             }
         }
         CUSTOMER_DATABASE.add(customer);
-        LastId = customer.getId();
+        lastId = customer.getId();
         return true;
-
     }
 
-    public static boolean removeCustomer(int id)
-    {
+    public static boolean removeCustomer(int id) throws CustomerNotFoundException {
         boolean returnValue = false;
         for(Customer customerDB : CUSTOMER_DATABASE)
         {
@@ -68,7 +63,7 @@ public class DatabaseCustomer //Create the class DatabaseCustomer
                 returnValue = true;
             }
         }
-        return returnValue;
+        throw new CustomerNotFoundException(id);
     }
 
 }

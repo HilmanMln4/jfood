@@ -82,10 +82,13 @@ public class Promo
     {
         this.id=id;
     }
-    
-    public String toString()
-    {
-        return id+""+code+""+discount+""+minPrice+""+active;
+
+    public String toString(){
+        return String.format("Id=" + getId() + "\n" +
+                "Code=" + getCode() + "\n" +
+                "Discount=" + getDiscount() + "\n" +
+                "MinPrice=" + getMinPrice() + "\n" +
+                "Status=" + getActive());
     }
     
     /*

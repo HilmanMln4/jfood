@@ -26,18 +26,16 @@ public class DatabaseInvoice {
         return null;
     }
 
-    public static ArrayList<Invoice> getInvoiceByCustomer(int customerId)
-    {
-        ArrayList<Invoice> list = new ArrayList<Invoice>();
-        for(Invoice invoice: INVOICE_DATABASE)
+    public static ArrayList<Invoice> getInvoiceByCustomer(int customerId) throws CustomerNotFoundException {
+        ArrayList<Invoice> list = new ArrayList<>();
+        Customer customer = DatabaseCustomer.getCustomerById(customerId);
+        for(Invoice invoice : INVOICE_DATABASE)
         {
-            if(invoice.getCustomer().getId() == customerId)
-            {
+            if(invoice.getCustomer().equals(customer)){
                 list.add(invoice);
-                return list;
             }
         }
-        return null;
+        return list;
     }
 
     public static boolean addInvoice(Invoice invoice)

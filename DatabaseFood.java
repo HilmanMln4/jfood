@@ -12,7 +12,7 @@ public class DatabaseFood //Create the class DatabaseFood
      * declare the variables
      * of the DatabaseFood
      */
-    public static ArrayList<Food> FOOD_DATABASE=new ArrayList<Food>();;
+    private static ArrayList<Food> FOOD_DATABASE=new ArrayList<Food>();;
     public static int lastId;
     public static ArrayList<Food> getFoodDatabase()
     {
@@ -22,29 +22,27 @@ public class DatabaseFood //Create the class DatabaseFood
     {
         return lastId;
     }
-    public static Food getFoodById(int id)
+
+    public static Food getFoodById(int id) throws FoodNotFoundException
     {
-        for(Food foods : FOOD_DATABASE)
-        {
-            if (foods.getId() == id)
-            {
-                return foods;
+        for (Food food : FOOD_DATABASE){
+            if(food.getId() == id){
+                return food;
             }
         }
-        return null;
+        throw new FoodNotFoundException(id);
     }
-    public static ArrayList<Food> getFoodBySeller(int sellerId)
-    {
-        ArrayList<Food> list = new ArrayList<>();
-        for(Food foods : FOOD_DATABASE)
-        {
-            if (foods.getSeller().getId() == sellerId)
-            {
-                list.add(foods);
+
+    public static ArrayList<Food> getFoodBySeller(int sellerId){
+        ArrayList<Food> LIST_FOOD_BY_SELLER = new ArrayList<Food>();
+        for(Food food : FOOD_DATABASE){
+            if(food.getSeller().getId() == sellerId){
+                LIST_FOOD_BY_SELLER.add(food);
             }
         }
-        return list;
+        return LIST_FOOD_BY_SELLER;
     }
+
     public static ArrayList<Food> getFoodByCategory(FoodCategory category)
     {
         ArrayList<Food> list = new ArrayList<>();
@@ -64,14 +62,13 @@ public class DatabaseFood //Create the class DatabaseFood
         return true;
     }
 
-    public static boolean removeFood(int id)
-    {
+    public static boolean removeFood(int id) throws FoodNotFoundException {
         for(Food food : FOOD_DATABASE) {
             if(food.getId() == id) {
                 FOOD_DATABASE.remove(food);
                 return true;
             }
         }
-        return false;
+        throw new FoodNotFoundException(id);
     }
 }

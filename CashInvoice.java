@@ -57,14 +57,13 @@ public class CashInvoice extends Invoice
     {
         this.deliveryFee=deliveryFee;
     }
-    
+
     public void setTotalPrice() {
         for (int i = 0; i <= getFood().size(); i++) {
             if (deliveryFee > 0) {
                 totalPrice = getFood().get(i).getPrice() + getDeliveryFee();
             } else {
                 totalPrice = getFood().get(i).getPrice();
-
             }
         }
     }

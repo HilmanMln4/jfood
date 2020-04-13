@@ -1,16 +1,18 @@
 import javax.xml.crypto.Data;
 import java.util.Calendar;
 import java.util.*;
+import java.util.regex.*;
+import java.text.*;
 
 public class JFood
 {
     public static void main(String[] args)
     {
 
-        System.out.println("=====MODUL 7=====");
+        System.out.println("=====Invoice=====");
         Location lokasi = new Location("Tangerang Selatan", "Banten", "Rumah");
 
-        /*ArrayList<Food> Mekdi = new ArrayList<Food>();
+        ArrayList<Food> Mekdi = new ArrayList<Food>();
         ArrayList<Food> Kfc = new ArrayList<Food>();
         ArrayList<Food> Aw = new ArrayList<Food>();
 
@@ -29,13 +31,13 @@ public class JFood
         {
             DatabaseInvoice.addInvoice(new CashInvoice(DatabaseInvoice.getLastId() + 1, Mekdi, DatabaseCustomer.getCustomerById(1), 10000));
             DatabaseInvoice.addInvoice(new CashInvoice(DatabaseInvoice.getLastId() + 1, Mekdi, DatabaseCustomer.getCustomerById(2), 10000));
-            DatabaseInvoice.addInvoice(new CashlessInvoice(DatabaseInvoice.getLastId() + 1, Kfc, DatabaseCustomer.getCustomerById(3)));
-            DatabaseInvoice.addInvoice(new CashlessInvoice(DatabaseInvoice.getLastId() + 1, Kfc, DatabaseCustomer.getCustomerById(4)));
+            //DatabaseInvoice.addInvoice(new CashlessInvoice(DatabaseInvoice.getLastId() + 1, Kfc, DatabaseCustomer.getCustomerById(3)));
+            //DatabaseInvoice.addInvoice(new CashlessInvoice(DatabaseInvoice.getLastId() + 1, Kfc, DatabaseCustomer.getCustomerById(4)));
         }
-        catch (CustomerNotFoundException x)
+        catch (CustomerNotFoundException | OngoingInvoiceAlreadyExistsException x)
         {
             System.err.println(x.getMessage());
-        }*/
+        }
 
         try {
             DatabaseCustomer.addCustomer(new Customer(DatabaseCustomer.getLastId()+1,"Hilman M", "Hilman.m@ui.ac.id", "99999999", Calendar.getInstance()));
@@ -83,6 +85,12 @@ public class JFood
 
         for(Promo promo : DatabasePromo.getPromoDatabase()){
             System.out.println(promo.toString());
+        }
+
+        try {
+            DatabaseInvoice.removeInvoice(10);
+        } catch (InvoiceNotFoundException i){
+            System.err.println(i.getMessage());
         }
 
     }

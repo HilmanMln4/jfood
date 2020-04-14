@@ -20,8 +20,8 @@ import java.time.LocalDateTime;
 public class CashInvoice extends Invoice
 {
     // instance variables - replace the example below with your own
-    private static final PaymentType PAYMENT_TYPE=PaymentType.Cash;
-    int deliveryFee;
+    private static PaymentType PAYMENT_TYPE=PaymentType.Cash;
+    private int deliveryFee=0;
 
     /**
      * Constructor for objects of class CashInvoice
@@ -42,7 +42,8 @@ public class CashInvoice extends Invoice
         super(id, foods, customer);
         this.deliveryFee=deliveryFee;
     }
-    
+
+    @Override
     public PaymentType getPaymentType()
     {
         return PAYMENT_TYPE;
@@ -58,16 +59,18 @@ public class CashInvoice extends Invoice
         this.deliveryFee=deliveryFee;
     }
 
-    public void setTotalPrice() {
-        for (int i = 0; i <= getFood().size(); i++) {
-            if (deliveryFee > 0) {
-                totalPrice = getFood().get(i).getPrice() + getDeliveryFee();
-            } else {
-                totalPrice = getFood().get(i).getPrice();
-            }
+    @Override
+    public void setTotalPrice()
+    {
+        super.totalPrice=0;
+        for(Food foods : getFood())
+        {
+            super.totalPrice=super.totalPrice+foods.getPrice();
         }
+        super.totalPrice=super.totalPrice+deliveryFee;
     }
-    
+
+    @Override
      public String toString() {
 
         String string = "";
